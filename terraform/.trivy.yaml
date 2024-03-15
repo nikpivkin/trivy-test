@@ -1,0 +1,14 @@
+exit-code: 1
+
+scan:
+  skip-dirs:
+    - "*/examples/**"
+
+misconfiguration:
+  scanners:
+    - terraform
+
+  include-non-failures: false
+
+  terraform:
+    exclude-downloaded-modules: true

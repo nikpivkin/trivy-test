@@ -1,0 +1,17 @@
+name: Trivy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ubuntu_build:
+    name: Build on Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: "config"
+          trivy-config: "${{ github.workspace }}/terraform/.trivy.yaml"
