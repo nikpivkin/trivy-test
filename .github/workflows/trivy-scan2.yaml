@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - run: git config --global url."https://oauth2:${{ secrets.GITHUB_TOKEN }}@github.com".insteadOf https://github.com
+      - run: git config --global url."https://nikpivkin:${{ secrets.GITHUB_TOKEN }}@github.com".insteadOf https://github.com
       
       - name:  Run Trivy
         uses: aquasecurity/trivy-action@master
