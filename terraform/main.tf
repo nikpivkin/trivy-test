@@ -1,3 +1,3 @@
-resource "aws_s3_bucket" "test" {
-  bucket = "test"
+module "test" {
+  source = "github.com/nikpivkin/test-private-tf-module"
 }
