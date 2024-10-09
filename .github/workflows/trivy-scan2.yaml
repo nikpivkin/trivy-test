@@ -23,7 +23,8 @@ jobs:
           format: 'sarif'
           output: 'trivy-results.sarif'
           exit-code: '0'
-          github-pat: ${{ secrets.MY_GITHUB_PAT }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_PAT }}
 
       - name: Upload Trivy scan results
         if: always()
