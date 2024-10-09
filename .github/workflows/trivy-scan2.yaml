@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # - run: git config --global url."https://oauth2:${{ secrets.MY_GITHUB_PAT }}@github.com".insteadOf https://github.com
+      - run: git config --global url."https://oauth2:${{ secrets.MY_GITHUB_PAT }}@github.com".insteadOf https://github.com
 
       # - run: cd terraform && terraform init
       
@@ -32,8 +32,6 @@ jobs:
           scan-type: 'config'
           format: 'table'
           exit-code: '1'
-        env:
-          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_PAT }}
 
       # - name: Upload Trivy scan results
       #   if: always()
