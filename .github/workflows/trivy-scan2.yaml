@@ -19,6 +19,7 @@ jobs:
       - name:  Run Trivy
         uses: aquasecurity/trivy-action@master
         with:
+          scan-type: 'config'
           trivy-config: .github/workflows/config/trivy.yaml
           
       # - name:  Run Trivy
