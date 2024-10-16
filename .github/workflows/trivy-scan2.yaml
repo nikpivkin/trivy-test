@@ -19,10 +19,7 @@ jobs:
       - name:  Run Trivy
         uses: aquasecurity/trivy-action@master
         with:
-          scan-type: 'config'
-          format: 'sarif'
-          output: 'trivy-results.sarif'
-          exit-code: '1'
+          trivy-config: .github/workflows/config/trivy.yaml
           
       # - name:  Run Trivy
       #   uses: aquasecurity/trivy-action@master
