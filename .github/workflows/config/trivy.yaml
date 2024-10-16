@@ -1,0 +1,7 @@
+format: sarif
+output: trivy-results.sarif
+
+severity:
+  - MEDIUM
+  - HIGH
+  - CRITICAL
