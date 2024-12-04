@@ -11,26 +11,17 @@ jobs:
       security-events: write
     steps:
       - uses: actions/checkout@v4
-
-      - run: git config --global url."https://oauth2:${{ secrets.MY_GITHUB_PAT }}@github.com".insteadOf https://github.com
-
-      # - run: cd terraform && terraform init
-      
+          
       - name:  Run Trivy
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'config'
-          trivy-config: .github/workflows/config/trivy.yaml
-          
-      # - name:  Run Trivy
-      #   uses: aquasecurity/trivy-action@master
-      #   with:
-      #     scan-type: 'config'
-      #     format: 'table'
-      #     exit-code: '1'
+          format: 'sarif'
+          version: v0.58.0
+          output: 'trivy-results.sarif'
 
-      # - name: Upload Trivy scan results
-      #   if: always()
-      #   uses: github/codeql-action/upload-sarif@v3
-      #   with:
-      #     sarif_file: 'trivy-results.sarif'
+      - name: Upload Trivy scan results
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'trivy-results.sarif'
