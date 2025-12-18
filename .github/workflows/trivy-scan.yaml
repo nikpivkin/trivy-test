@@ -16,7 +16,7 @@ jobs:
           scan-type: 'fs'
           scanners: misconf
           format: template
-          template: "${{ github.workspace }}/templates/test.tpl"
+          template: "@${{ github.workspace }}/templates/test.tpl"
           output: result.json
       - if: always()
         run: cat result.json
