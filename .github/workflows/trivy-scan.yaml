@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: ls -l "${{ github.workspace }}"
       - run: cat "${{ github.workspace }}/templates/test.tpl"
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.33.1
