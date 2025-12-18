@@ -9,11 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - run: cat "${{ github.workspace }}/terraform/.trivy.yaml"
-      
-      - name: Run Trivy
-        uses: aquasecurity/trivy-action@master
+      - run: cat "${{ github.workspace }}/templates/test.tpl"
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.33.1
         with:
-          scan-type: "config"
-          trivy-config: "terraform/.trivy.yaml"
+          scan-type: 'fs'
+          scanners: misconf
+          format: template
+          template: "${{ github.workspace }}/templates/test.tpl"
+          output: result.json
+      - if: always()
+        run: cat result.json
