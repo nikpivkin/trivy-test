@@ -1,1 +1,3 @@
-
+{
+  "appVersion": "{{ appVersion }}",
+}
